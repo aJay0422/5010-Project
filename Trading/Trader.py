@@ -10,18 +10,17 @@ class Trader:
         self.share = 0
 
     def trade(self, history_data, strategy="MA", **kwargs):
-        self.pf_record = history_data[["Open"]]
+        self.pf_record = history_data[["Open"]].copy()
 
         if strategy == "MA":
             short = kwargs["short"]
             long = kwargs["long"]
             self.decisions = MA(history_data, short, long)
-
             for i in range(len(self.decisions)):
                 date = self.decisions.index[i]
                 if i == 0:
-                    self.pf_record.loc[date, "cash"] = self.cash
-                    self.pf_record.loc[date, "share"] = self.share
+                    self.pf_record["cash"] = self.cash
+                    self.pf_record["share"] = self.share
                     continue
 
                 if self.decisions[date] == "None":
