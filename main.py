@@ -5,3 +5,4 @@ if __name__ == '__main__':
     X_train, X_test = get_train_test()
     trader1 = Trader()
     trader1.trade(X_train, short=5, long=10)
+    print(trader1.decisions.unique())
