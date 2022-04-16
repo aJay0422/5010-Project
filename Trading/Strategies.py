@@ -21,11 +21,11 @@ def MA(df, short=5, long=10):
 
         idx = df.index[i]
         prev_idx = df.index[i-1]
-        if (df.loc[idx, "sll"] - df.loc[prev_idx, "sll"]) == 1:
-            df.loc[idx, "action"] = "Buy"
-        elif (df.loc[idx, "sll"] - df.loc[prev_idx, "sll"]) == -1:
-            df.loc[idx, "action"] = "Sell"
-        else:
-            df.loc[idx, "action"] = "None"
+        # if df.loc[idx, "sll"] and (not df.loc[prev_idx, "sll"]):
+        #     df.loc[idx, "action"] = "Buy"
+        # elif (not df.loc[idx, "sll"]) and df.loc[prev_idx, "sll"]:
+        #     df.loc[idx, "action"] = "Sell"
+        # else:
+        #     df.loc[idx, "action"] = "None"
 
     return df["action"]
